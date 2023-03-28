@@ -1,10 +1,12 @@
 from FBHelper import FBHelper
 
-class FbAuto():
+
+class FbAuto:
     Chrome = FBHelper()
     Chrome.login()
-    isLogin=Chrome.check_login()
-
+    isLoginFB=Chrome.check_login()
+    if isLoginFB:
+        Chrome.surf_newsfeed()
 
 
 
