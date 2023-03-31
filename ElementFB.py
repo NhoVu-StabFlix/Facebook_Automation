@@ -14,7 +14,7 @@ NEWSFEED ="//div[@id='m_news_feed_stream']/descendant::article"
 post="//div[@id='m_news_feed_stream']/descendant::article[{}]"
 TEXT_POST="//div[@id='m_news_feed_stream']/descendant::article/descendant::div[@data-ft='{'tn':'*s'}']"
 FRIEND_BUTTON=(By.XPATH,"//div[@id='requests_jewel']/a")
-ADD_FRIEND_BUTTON="//button[.='Thêm bạn bè' or .='Add Friend']"
+ADD_FRIEND_BUTTON="//button[@value='Thêm bạn bè']"
 SUGESSTION_FRIEND=(By.XPATH,"//a[contains(@href,'/friends/center/suggestions')]")
 LIKE_BUTTON = (By.XPATH, "Thích")
 

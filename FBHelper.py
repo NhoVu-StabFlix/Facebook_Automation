@@ -151,16 +151,11 @@ class FBHelper(Chrome):
         return False
 
     def login_tiktok(self):
-        self.driver.get("https://tiktok.com")
-        time.sleep(4)
-        self.wait_page_load()
-        self.do_click(LOGIN_TIKTOK_BUTTON)
-        self.wait_page_load()
+        self.driver.get("https://www.tiktok.com/login")
         self.do_click(LOGIN_TIKTOK_BY_FB_BUTTON)
         time.sleep(10)
         self.switch_to_tab()
         self.wait_page_load()
-        self.do_sendkeys(PASSWORD_INPUT_LOGIN_TIKTOK, self.password)
         self.do_click(CONTINUE_FB_TIKTOK_BUTTON)
         time.sleep(3)
         self.wait_page_load()

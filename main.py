@@ -8,7 +8,7 @@ class FbAuto:
     Chrome.login()
     islogin=Chrome.check_login()
     if islogin:
-        Chrome.add_friend()
+        Chrome.login_tiktok()
 
 
 if __name__ == '__main__':
