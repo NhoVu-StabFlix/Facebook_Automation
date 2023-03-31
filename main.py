@@ -1,13 +1,14 @@
+import time
+
 from FBHelper import FBHelper
 
 
 class FbAuto:
     Chrome = FBHelper()
     Chrome.login()
-    isLoginFB=Chrome.check_login()
-    if isLoginFB:
-        Chrome.surf_newsfeed()
-
+    islogin=Chrome.check_login()
+    if islogin:
+        Chrome.add_friend()
 
 
 if __name__ == '__main__':

@@ -2,6 +2,8 @@ import time
 from ChromeHelper import ChromeHelper as Chrome
 from ElementFB import *
 import random
+from facebook_scraper import get_photos, get_posts, get_profile, write_posts_to_csv
+
 
 class FBHelper(Chrome):
     def __init__(self):
@@ -70,22 +72,49 @@ class FBHelper(Chrome):
         return False
 
     def surf_newsfeed(self):
-        posts = []
-        newsfeeds = self.find_all_element(NEWSFEED)
-        if newsfeeds:
-            for item in newsfeeds:
-                posts.append(item)
+        try:
+            posts = []
+            newsfeeds = self.find_all_element(NEWSFEED)
+            if newsfeeds:
+                for item in newsfeeds:
+                    posts.append(item)
 
-        for post in posts:
-            self.scroll_to_Element(post)
-            time.sleep(random.randint(5, 10))
-        time.sleep(10)
+            for post in posts:
+                print(post)
+                self.scroll_to_Element(post)
+                time.sleep(random.randint(5, 10))
+            time.sleep(10)
 
-    def scrape_info(self):
-        list_uid = []
+        except:
+            print("not found post in newsfeed")
 
     def add_friend(self):
-        pass
+        list_friend = []
+
+        self.driver.get("https://m.facebook.com")
+        self.wait_page_load()
+
+        try:
+            self.do_click(FRIEND_BUTTON)
+            self.wait_page_load()
+            self.do_click(SUGESSTION_FRIEND)
+            self.wait_page_load()
+        except:
+            self.driver.get("https://m.facebook.com/friends/center/suggestions/")
+
+        self.wait_page_load()
+        elements = self.find_all_element(ADD_FRIEND_BUTTON)
+        for element in elements:
+            list_friend.append(element)
+            print(element)
+        time.sleep(4)
+        for friend in list_friend:
+            self.scroll_to_Element(friend)
+            time.sleep(3)
+            self.do_click(friend)
+            print("add friend successfully")
+            time.sleep(random.randint(5,10))
+
 
     def watch_video(self):
         pass

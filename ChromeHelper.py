@@ -30,7 +30,10 @@ class ChromeHelper():
         options.add_argument('disable-web-security')
         options.add_argument('disable-translate')
         options.add_experimental_option('useAutomationExtension', False)
-        options.add_argument('--app=https://bot.sannysoft.com/')
+        options.add_argument('--app=https://abrahamjuliot.github.io/creepjs/')
+        prefs = {"credentials_enable_service": False,
+                 "profile.password_manager_enabled": False}
+        options.add_experimental_option("prefs", prefs)
         self.driver = webdriver.Chrome(options=options)
         stealth(self.driver,
                 languages=["en-US", "en"],
@@ -119,11 +122,12 @@ class ChromeHelper():
     def find_all_element(self, by_locator):
 
         elements = self.driver.find_elements(By.XPATH, by_locator)
-        for element in elements:
-            print(element.text)
 
         return elements
 
+    def find_child_element(self,element,by_locator):
+        child=element.find_element(by_locator)
+        return child
     def open_new_tab(self):
         try:
             self.driver.switch_to.new_window('tab')
